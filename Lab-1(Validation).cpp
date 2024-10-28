@@ -1,3 +1,4 @@
+/*sting validation of that the sting is valid or not */
 #include<iostream>
 using namespace std;
 int main ()
