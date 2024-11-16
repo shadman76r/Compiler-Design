@@ -70,6 +70,7 @@ namespace MyApplication
         }
     }
 }*/
+/*
 using System;
 
 namespace MyApplication
@@ -125,6 +126,23 @@ namespace MyApplication
                 i++;
             }
             while (i < 10);
+        }
+    }
+}*/
+using System;
+
+namespace MyApplication
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int i;
+           
+            for ( i = 1; i <= 10; i = i + 2)
+            {
+                Console.Write(i);
+            }
         }
     }
 }
