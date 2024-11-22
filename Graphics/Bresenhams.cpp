@@ -204,7 +204,7 @@ void display() {
 
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
-    glutInitWindowSize(400, 400);        // Set the window's initial width & height
+    glutInitWindowSize(400, 500);        // Set the window's initial width & height
     glutInitWindowPosition(50, 50);      // Set the window's initial position
     glutCreateWindow("Bresenham's Line"); // Create a window with the given title
     glutDisplayFunc(display);            // Register display callback handler
