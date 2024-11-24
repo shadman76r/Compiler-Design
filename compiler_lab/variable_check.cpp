@@ -38,19 +38,14 @@ using namespace std;
 
 int main() {
     string variable="name";
-    //cout << "Enter a variable name: ";
-    //cin >> variable;
+   // cout<<"Enter a valid variable name"<<endl;
+    //cin>>variable;
 
     bool isValid = true;
 
-    // Check if the variable is empty
-    if (variable.empty()) {
-        cout << "Invalid variable name: Variable name cannot be empty.\n";
-        isValid = false;
-    } 
     // Check if the first character is a letter or an underscore
-    else if (!((variable[0] >= 'A' && variable[0] <= 'Z') || 
-               (variable[0] >= 'a' && variable[0] <= 'z') || 
+    if (!((variable[0] >= 'A' && variable[0] <= 'Z') || 
+          (variable[0] >= 'a' && variable[0] <= 'z') || 
                variable[0] == '_')) {
         cout << "Invalid variable name: Variable name must start with a letter or an underscore (_).\n";
         isValid = false;
