@@ -37,9 +37,9 @@ int main() {
 using namespace std;
 
 int main() {
-    string variable;
-    cout << "Enter a variable name: ";
-    cin >> variable;
+    string variable="name";
+    //cout << "Enter a variable name: ";
+    //cin >> variable;
 
     bool isValid = true;
 
