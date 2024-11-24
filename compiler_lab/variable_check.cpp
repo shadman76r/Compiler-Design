@@ -33,11 +33,10 @@ int main() {
 }*/
 
 #include <iostream>
-#include <string>
 using namespace std;
 
 int main() {
-    string variable="name";
+    string variable="2 2";
    // cout<<"Enter a valid variable name"<<endl;
     //cin>>variable;
 
@@ -68,9 +67,9 @@ int main() {
 
     // If the variable passes all checks
     if (isValid) {
-        cout << "Valid variable name.\n";
+        cout << "Valid variable name."<<endl;
     } else {
-        cout << "The format of the variable name is incorrect.\n";
+        cout << "The format of the variable name is incorrect."<<endl;
     }
 
     return 0;
