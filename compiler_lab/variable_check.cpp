@@ -31,7 +31,7 @@ int main() {
 
     return 0;
 }*/
-
+/*
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -73,5 +73,85 @@ int main() {
     }
 
     return 0;
-}
+}*/
 
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    string declaration;
+    cout << "Enter a valid variable: ";
+    getline(cin, declaration);
+
+    // Manually specify the size of the array
+    string validDataTypes[] = {"int", "float", "char", "string", "double", "bool"};
+    int numDataTypes = 6; // Manually set the size of the array
+
+    // Variables to hold the data type and variable name
+    string dataType = "", variable = "";
+    int i = 0;
+
+    // Extract data type
+    for (i; i < declaration.length() && declaration[i] != ' '; i++) {
+        dataType += declaration[i];
+    }
+
+    // Skip spaces between data type and variable name
+    for (i; i < declaration.length() && declaration[i] == ' '; i++) {
+        // Do nothing; just move the index forward
+    }
+
+    // Extract variable name
+    for (i; i < declaration.length(); i++) {
+        variable += declaration[i];
+    }
+
+    // Check if the data type is valid
+    bool isValidDataType = false;
+    for (int j = 0; j < numDataTypes; j++) {
+        if (dataType == validDataTypes[j]) {
+            isValidDataType = true;
+            break;
+        }
+    }
+
+    // Validate the variable name
+    bool isValidVariable = true;
+    if (variable.empty()) {
+        isValidVariable = false;
+        cout << "Invalid declaration: No variable name provided.\n";
+    } else {
+        // Check the first character of the variable name
+        if (!((variable[0] >= 'A' && variable[0] <= 'Z') ||
+              (variable[0] >= 'a' && variable[0] <= 'z') ||
+              variable[0] == '_')) {
+            cout << "Invalid variable name: Must start with a letter or an underscore (_).\n";
+            isValidVariable = false;
+        }
+
+        // Check the remaining characters of the variable name
+        for (int k = 1; k < variable.length(); k++) {
+            char ch = variable[k];
+            bool isLetter = (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z');
+            bool isDigit = (ch >= '0' && ch <= '9');
+            bool isUnderscore = (ch == '_');
+            if (!(isLetter || isDigit || isUnderscore)) {
+                cout << "Invalid variable name: Character '" << ch << "' is not allowed.\n";
+                isValidVariable = false;
+                break;
+            }
+        }
+    }
+
+    if (!isValidDataType) {
+        cout << "Invalid data type: " << dataType << endl;
+    }
+    if (isValidDataType && isValidVariable) {
+        cout << "Valid declaration: Data type is '" << dataType << "', and variable name is '" << variable << "'.\n";
+    } else {
+        cout << "The declaration is incorrect.\n";
+    }
+
+    return 0;
+}

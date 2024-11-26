@@ -6,7 +6,7 @@ int main() {
     cout << "Enter a valid integer value: "<<endl;
     cin >> n;
 
-    for (int i = 2; i <= n; i += 2) {
+    for (int i = 2; i <= n; i+=2) {
         sum += i;
     }
 
