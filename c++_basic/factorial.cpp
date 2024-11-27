@@ -8,7 +8,7 @@ int main() {
     cin >> n;
 
     if (n < 0) {
-        cout << "Factorial is not defined for negative numbers." << endl;
+        cout << "please do not give negagtive number ." << endl;
     } else {
         int i = 1;
         while (i <= n) {
