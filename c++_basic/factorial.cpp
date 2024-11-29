@@ -15,7 +15,7 @@ int main() {
             factorial *= i; 
             i++;           
         }
-        cout << "The factorial of " << n << " is: " << factorial << endl;
+        cout << "The number of " << n << " is: " << factorial << endl;
     }
 
     return 0;
