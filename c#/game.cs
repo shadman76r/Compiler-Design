@@ -66,7 +66,7 @@ class Boss_Enemy : Enemy
     // Default constructor
     public Boss_Enemy()
     {
-        Console.WriteLine("I am Boss Enemy");
+        Console.WriteLine("I am the boss enemey Enemy");
         Enemytype = "Boss";
     }
 
