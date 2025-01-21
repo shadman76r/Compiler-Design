@@ -92,13 +92,13 @@ void display() {
     glClear(GL_COLOR_BUFFER_BIT);
     ///Ground color
     glBegin(GL_POLYGON);
-    glColor3ub(241,231,215); ///
+    glColor3ub(241,231,215);
     glVertex2f(-50,-26);
     glVertex2f(-5,5);
     glVertex2f(-50,5);
     glEnd();
     glBegin(GL_POLYGON);
-    glColor3ub(241,231,215); ///
+    glColor3ub(241,231,215);
     glVertex2f(-50,5);
     glVertex2f(-5,5);
     glVertex2f(-5,39);
