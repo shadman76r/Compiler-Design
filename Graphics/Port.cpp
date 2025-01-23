@@ -116,16 +116,16 @@ void display() {
 /// Handle keyboard inputs for movement
 void handleKeyboard(unsigned char key, int x, int y) {
     switch (key) {
-    case 'w': // Move up
+    case 'p': // Move up
         shipY -= 1.0f;
         break;
-    case 's': // Move down
+    case 'k': // Move down
         shipY += 1.0f;
         break;
-    case 'a': // Move left
+    case 't': // Move left
         shipX -= 1.0f;
         break;
-    case 'd': // Move right
+    case 'y': // Move right
         shipX += 1.0f;
         break;
     case 27: // Escape key to exit
