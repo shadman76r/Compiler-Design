@@ -50,7 +50,7 @@ namespace Feedbacksystem
             if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(email) ||
                 string.IsNullOrWhiteSpace(feedbackMessage))
             {
-                MessageBox.Show("Please fill in all fields.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(" We request you to fill up the from so that you can submit the feed back.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
