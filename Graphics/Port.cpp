@@ -1,18 +1,19 @@
 #include <windows.h>
+#include<iostream>
 #include <GL/glut.h>
 #include <stdlib.h>
 #include <math.h>
-#include <chrono>
-#include <thread>
+#include <chrono> ///Rotate
+#include <thread> ///Grediant
 #define PI 3.14159265358979323846
-///Mail circle
+/// Main circle
 void mainCircle(float x, float y, float r) {
-    int numSegments = 100; // The number of triangles used to draw the circle
+    int numSegments = 100; /// The number of triangles used to draw the circle
     glBegin(GL_POLYGON);
-    glColor3ub(0,0, 0); //Black color
+    glColor3ub(0,0,0);     ///Black color
 
     for (int i = 0; i < numSegments; i++) {
-        float angle = 2.0f * PI * i / numSegments; // Calculate angle
+        float angle = 2.0f * PI * i / numSegments; /// Calculate angle
         float xOffset = r * cos(angle);
         float yOffset = r * sin(angle);
         glColor3ub(0,0,0);
@@ -20,27 +21,33 @@ void mainCircle(float x, float y, float r) {
     }
     glEnd();
 }
-///This part is for only keyboard
-bool isNight = false; // Toggle between day and night
-float shipX = 0.0f;  ///Initial X position of the ships
-float shipY = 0.0f;  ///Initial Y position of the ships
-float ship2X = 50.0f;  /// Start from the right
+/// This part is for only keyboard
+float offsetX = -10.0f;  // Starting position on the left
+float offsetY = 0.0f;  // Y position (static)
+float planeX = -50.0f;
+bool isPlaneMoving = false;
+bool isNight = false; /// Toggle between day and night
+float shipX = 0.0f;   ///  Initial X position of the ships
+float shipY = 0.0f;   ///Initial Y position of the ships
+float ship2X = 50.0f; /// Start from the right
 float shipSpeed=2.0f;
-bool shipMovingLeft = true; /// Controls direction
-bool isWaiting = false; /// Indicates waiting state
-bool shipRotated = false; /// Tracks rotation
-float cloudOffsetX = 0.0f; // Controls cloud movement
-float cloudSpeed = 0.05f;  // Adjust for faster/slower clouds
-float resetPosition = 100.0f; // Reset point when clouds move past the screen
+bool shipMovingLeft = true;  /// Controls direction(2nd)
+bool isWaiting = false;      /// Indicates waiting state(2nd)
+bool shipRotated = false;    /// Tracks rotation(2nd)
+float cloudOffsetX = 0.0f;   /// Controls cloud movement
+float cloudSpeed = 0.05f;    /// Adjust for faster/slower clouds
+float resetPosition = 100.0f;/// Reset point when clouds move past the screen
+bool movingRight = true;  // Direction of movement
+bool isMoving = false;  // Whether the ship is moving or not
 
 void setBackgroundColor() {
     if (isNight) {
-        glClearColor(0.0f, 0.1f, 0.2f, 1.0f); // Dark Water for Night
+        glClearColor(0.0f, 0.1f, 0.2f, 1.0f); /// Dark Water for Night
     } else {
-        glClearColor(0.8f, 0.9f, 1.0f, 1.0f); // Light Water for Day
+        glClearColor(0.8f, 0.9f, 1.0f, 1.0f); /// Light Water for Day
     }
 }
-///Bg color
+/// Bg color
 void initGL() {
     setBackgroundColor(); /// Main BG water color
 }
@@ -56,7 +63,7 @@ void drawSmallCircle(float cx, float cy, float r) {
     }
     glEnd();
 }
-///Sky day and Night
+/// Sky day and Night
 void drawSky() {
     glBegin(GL_POLYGON);
     if (isNight) {
@@ -84,7 +91,7 @@ void drawSky() {
 }
 /// Function to handle the sky
 void handleKeyPress(unsigned char key, int x, int y) {
-    if (key == 'p' || key == 'P') { // If 'P' is pressed
+    if (key == 'n' || key == 'N') { // If 'P' is pressed
         isNight = !isNight; // Toggle between day and night
         glutPostRedisplay(); // Redraw the scene
     }
@@ -119,7 +126,6 @@ void drawStars() {
     drawSmallCircle(-42,38, 0.005);
     drawSmallCircle(-29,35, 0.006);
 }
-
 /// Function to update cloud movement (only when day mode is active)
 void updateClouds(int value) {
     if (!isNight) { // Move clouds only in day mode
@@ -131,8 +137,6 @@ void updateClouds(int value) {
     glutPostRedisplay();
     glutTimerFunc(16, updateClouds, 0); // Call update every 16ms (~60 FPS)
 }
-
-
 ///Circle for sun
 void drawCircle(float cx, float cy, float r) {
     glBegin(GL_POLYGON);
@@ -153,7 +157,6 @@ void drawMoon(float cx, float cy, float r) {
     glColor3ub(169, 169, 169); // Dark Gray Shadow
     drawCircle(cx + 0.2f, cy + 0.2f, r * 0.6f); // Small shadow
 }
-
 /// Function to draw gradient water (Day/Night)
 void drawGradientWater() {
     glBegin(GL_QUADS);
@@ -180,9 +183,86 @@ void drawGradientWater() {
 
     glEnd();
 }
+
+///update function for plan at night
+void updatePlanePosition(int value) {
+    if (isNight && isPlaneMoving) {
+        planeX += 0.1f;  // Move the plane to the right during the night
+
+        if (planeX > 100.0f) {  // Reset position if it goes off-screen to the right
+            planeX = -100.0f;
+        }
+    }
+
+    glutPostRedisplay();
+    glutTimerFunc(16, updatePlanePosition, 0); // Call update every 16ms (~60 FPS)
+}
+
+/// Mouse event to start/stop the plane
+void mouse(int button, int state, int x, int y) {
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) { // On left-click
+        isPlaneMoving = !isPlaneMoving;  // Toggle movement
+    }
+}
+
+///plan
+void plan(float offsetX, float offsetY) {
+    if(isNight){
+    // Body
+    glBegin(GL_POLYGON);
+    glColor3ub(153,153,153);
+    glVertex2f(planeX + (-44), 38);
+    glVertex2f(planeX + (-35), 38);
+    glVertex2f(planeX + (-32), 35);
+    glVertex2f(planeX + (-44), 35);
+    glEnd();
+
+    // Glass
+    glBegin(GL_POLYGON);
+    glColor3ub(0,0,0);
+    glVertex2f(planeX + (-36), 38);
+    glVertex2f(planeX + (-35), 38);
+    glVertex2f(planeX + (-33.5), 36.5);
+    glVertex2f(planeX + (-36), 36.5);
+    glEnd();
+
+    // Red Glasses
+    glBegin(GL_POLYGON);
+    glColor3ub(255,0,0);
+    glVertex2f(planeX + (-33.25), 36.25);
+    glVertex2f(planeX + (-33), 36);
+    glVertex2f(planeX + (-44), 36);
+    glVertex2f(planeX + (-44), 36.25);
+    glEnd();
+
+    // Wings
+    glBegin(GL_POLYGON);
+    glColor3ub(255,255,255);
+    glVertex2f(planeX + (-37), 37);
+    glVertex2f(planeX + (-36), 36);
+    glVertex2f(planeX + (-41.75), 33.75);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+    glColor3ub(255,255,255);
+    glVertex2f(planeX + (-39), 38);
+    glVertex2f(planeX + (-37), 38);
+    glVertex2f(planeX + (-41), 40);
+    glEnd();
+
+    // Back side
+    glBegin(GL_POLYGON);
+    glColor3ub(153,153,153);
+    glVertex2f(planeX + (-44), 38);
+    glVertex2f(planeX + (-44), 35);
+    glVertex2f(planeX + (-48), 40);
+    glEnd();
+    }
+}
+
 /// 1st ship
 void drawShip(float offsetX, float offsetY) {
-    float scale = 0.7f; // Scaling factor to make the ship smaller
+    float scale = 0.6f; // Scaling factor to make the ship smaller
 
     glPushMatrix();
     glTranslatef(offsetX + shipX, offsetY + shipY, 0.0f); // Translate the ship based on offsets
@@ -302,6 +382,7 @@ void drawShip(float offsetX, float offsetY) {
 
     glPopMatrix();
 }
+/// 2nd ship
 void seconship(float offsetX, bool rotated){
 
     glPushMatrix();
@@ -309,7 +390,7 @@ void seconship(float offsetX, bool rotated){
 
     if (rotated) {
         glTranslatef(0.0f, 0.0f, 0.0f); // Keep ship centered
-        glRotatef(180.0f, 0.0f, 1.0f, 0.0f); // Rotate 180 degrees
+        glRotatef(180.0f, 0.0f, 1.0f, 0.0f); /// Rotate 180 degrees
     }
 
 
@@ -804,6 +885,287 @@ void seconship(float offsetX, bool rotated){
     glPopMatrix();
 
 }
+/// 3rd ship
+void thirdship(float offsetX, float offsetY) {
+    glPushMatrix();
+    // Position the ship and flip horizontally
+    glTranslatef(offsetX, offsetY, 0);
+    glScalef(-1, 1, 1); // Flips the ship to face right
+
+
+    // Original ship drawing code (vertices remain unchanged)
+    if(isNight){
+    glBegin(GL_POLYGON);
+    glColor3ub(133, 133, 173);
+    glVertex2f(-6,-14);
+    glVertex2f(-3,-17);
+    glVertex2f(12,-17);
+    glVertex2f(12,-14);
+    glVertex2f(10,-14);
+    glVertex2f(10,-15);
+    glVertex2f(-2,-15);
+    glVertex2f(-3,-14);
+    glEnd();
+    }else{
+    glBegin(GL_POLYGON);
+    glColor3ub(194, 214, 214);
+    glVertex2f(-6,-14);
+    glVertex2f(-3,-17);
+    glVertex2f(12,-17);
+    glVertex2f(12,-14);
+    glVertex2f(10,-14);
+    glVertex2f(10,-15);
+    glVertex2f(-2,-15);
+    glVertex2f(-3,-14);
+    glEnd();
+    }
+
+    glBegin(GL_POLYGON);
+    glColor3ub(102, 0, 255);
+    glVertex2f(-3,-12);
+    glVertex2f(-2,-12);
+    glVertex2f(-2,-13);
+    glVertex2f(-3,-13);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+    glColor3ub(102, 0, 255);
+    glVertex2f(-3,-13);
+    glVertex2f(-2,-13);
+    glVertex2f(-2,-14);
+    glVertex2f(-3,-14);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+    glColor3ub(255, 153, 255);
+    glVertex2f(-3,-14);
+    glVertex2f(-2,-14);
+    glVertex2f(-2,-15);
+    glVertex2f(-3,-14);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+    glColor3ub(255, 0, 0);
+    glVertex2f(-2,-12);
+    glVertex2f(-1,-12);
+    glVertex2f(-1,-13);
+    glVertex2f(-2,-13);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+    glColor3ub(153, 102, 255);
+    glVertex2f(-2,-13);
+    glVertex2f(-1,-13);
+    glVertex2f(-1,-14);
+    glVertex2f(-2,-14);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+    glColor3ub(0, 153, 153);
+    glVertex2f(-2,-14);
+    glVertex2f(-1,-14);
+    glVertex2f(-1,-15);
+    glVertex2f(-2,-15);
+    glEnd();
+
+    glBegin(GL_POLYGON);
+    glColor3ub(0, 255, 0);
+    glVertex2f(-1,-12);
+    glVertex2f(0,-12);
+    glVertex2f(0,-13);
+    glVertex2f(-1,-13);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(68, 68, 34);
+    glVertex2f(-1,-13);
+    glVertex2f(0,-13);
+    glVertex2f(0,-14);
+    glVertex2f(-1,-14);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(204, 204, 255);
+    glVertex2f(-1,-14);
+    glVertex2f(0,-14);
+    glVertex2f(0,-15);
+    glVertex2f(-1,-15);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(204, 204, 255);
+    glVertex2f(0,-12);
+    glVertex2f(3,-12);
+    glVertex2f(3,-13);
+    glVertex2f(0,-13);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(0, 102, 102);
+    glVertex2f(0,-13);
+    glVertex2f(3,-13);
+    glVertex2f(3,-14);
+    glVertex2f(0,-14);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(68, 68, 34);
+    glVertex2f(0,-14);
+    glVertex2f(3,-14);
+    glVertex2f(3,-15);
+    glVertex2f(0,-15);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(68, 68, 34);
+    glVertex2f(1,-11);
+    glVertex2f(2,-11);
+    glVertex2f(2,-12);
+    glVertex2f(1,-12);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(255, 51, 204);
+    glVertex2f(2,-11);
+    glVertex2f(3,-11);
+    glVertex2f(3,-12);
+    glVertex2f(2,-12);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 102);
+    glVertex2f(3,-11);
+    glVertex2f(4,-11);
+    glVertex2f(4,-12);
+    glVertex2f(3,-12);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(51, 102, 0);
+    glVertex2f(4,-11);
+    glVertex2f(7,-11);
+    glVertex2f(7,-12);
+    glVertex2f(4,-12);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(68, 68, 34);
+    glVertex2f(3,-12);
+    glVertex2f(4,-12);
+    glVertex2f(4,-13);
+    glVertex2f(3,-13);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(68, 68, 34);
+    glVertex2f(3,-13);
+    glVertex2f(4,-13);
+    glVertex2f(4,-14);
+    glVertex2f(3,-14);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(153, 0, 51);
+    glVertex2f(3,-14);
+    glVertex2f(4,-14);
+    glVertex2f(4,-15);
+    glVertex2f(3,-15);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(68, 68, 34);
+    glVertex2f(4,-12);
+    glVertex2f(5,-12);
+    glVertex2f(5,-13);
+    glVertex2f(4,-13);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(102, 255, 204);
+    glVertex2f(4,-14);
+    glVertex2f(5,-14);
+    glVertex2f(5,-15);
+    glVertex2f(4,-15);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(255, 153, 51);
+    glVertex2f(5,-12);
+    glVertex2f(8,-12);
+    glVertex2f(8,-13);
+    glVertex2f(5,-13);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(153, 51, 102);
+    glVertex2f(5,-13);
+    glVertex2f(8,-13);
+    glVertex2f(8,-14);
+    glVertex2f(5,-14);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(51, 51, 255);
+    glVertex2f(5,-14);
+    glVertex2f(8,-14);
+    glVertex2f(8,-15);
+    glVertex2f(5,-15);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(68, 68, 34);
+    glVertex2f(7,-11);
+    glVertex2f(8,-11);
+    glVertex2f(8,-12);
+    glVertex2f(7,-12);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 255);
+    glVertex2f(8,-11);
+    glVertex2f(9,-11);
+    glVertex2f(9,-15);
+    glVertex2f(8,-15);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 255);
+    glVertex2f(9,-11);
+    glVertex2f(10,-11);
+    glVertex2f(10,-15);
+    glVertex2f(9,-15);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 255);
+    glVertex2f(8,-8);
+    glVertex2f(9,-8);
+    glVertex2f(9,-9);
+    glVertex2f(8,-9);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 255);
+    glVertex2f(6,-9);
+    glVertex2f(11,-9);
+    glVertex2f(11,-10);
+    glVertex2f(6,-10);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(255, 255, 255);
+    glVertex2f(7,-10);
+    glVertex2f(10,-10);
+    glVertex2f(10,-11);
+    glVertex2f(7,-11);
+    glEnd();
+    glBegin(GL_POLYGON);
+    glColor3ub(51, 51, 204);
+    glVertex2f(4,-13);
+    glVertex2f(5,-13);
+    glVertex2f(5,-14);
+    glVertex2f(4,-14);
+    glEnd();
+
+    glPopMatrix();
+}
+void updateship(int value) {
+    // If the ship is moving, update its position
+    if (isMoving) {
+        if (movingRight) {
+            offsetX += 0.1f;  // Move right
+            if (offsetX >= 5.0f) {  // If it reaches the right side
+                movingRight = false;  // Start moving left
+            }
+        } else {
+            offsetX -= 0.1f;  // Move left
+            if (offsetX <= -10.0f) {  // If it reaches the left side
+                movingRight = true;  // Start moving right
+            }
+        }
+    }
+
+    glutPostRedisplay();  // Redraw the scene
+    glutTimerFunc(16, updateship, 0);  // Call update every 16 ms (~60 FPS)
+}
+
 void stopAndRestart() {
     isWaiting = true; // Indicate waiting state
     std::this_thread::sleep_for(std::chrono::seconds(5)); // Wait for 30 seconds
@@ -812,19 +1174,18 @@ void stopAndRestart() {
     shipRotated = !shipRotated; // Flip ship rotation
     isWaiting = false; // Reset waiting state
 }
-
 void update(int value) {
     if (!isWaiting) {
         if (shipMovingLeft) {
-            ship2X -= 0.1f; // Move left
+            ship2X -= 0.5f; // Move left /// speed form left to right
             if (ship2X <= 0.0f) { // Stop at left side
                 ship2X = 0.0f;
                 std::thread(stopAndRestart).detach(); // Start wait time in a separate thread
             }
         } else {
-            ship2X += 0.1f; // Move right
-            if (ship2X >= 50.0f) { // Stop at right side
-                ship2X = 50.0f;
+            ship2X += 0.5f; // Move right /// speed form right to left
+            if (ship2X >= 70.0f) { // Stop at right side /// for axis control
+                ship2X = 70.0f;
                 std::thread(stopAndRestart).detach(); // Start wait time
             }
         }
@@ -833,7 +1194,7 @@ void update(int value) {
     glutPostRedisplay(); // Redraw the scene
     glutTimerFunc(16, update, 0); // Call update every 16ms (~60 FPS)
 }
-///Trucks and some boxes
+/// Trucks and some boxes
 void Trucks(){
     ///1st truck
     glBegin(GL_POLYGON);
@@ -889,9 +1250,9 @@ void Trucks(){
     glEnd();
 
 }
-///Boxes on the portside
+/// Boxes on the portside
 void drawStackedBoxes(float startX, float startY,float spacing) {
-    for (int i = 0; i <5; i++) {
+    for (int i = 0; i <10; i++) {
         float offsetY = i * spacing; // Move each box downward
         glBegin(GL_POLYGON);
         glColor3ub(255, 0, 0); // Light purple color
@@ -946,10 +1307,12 @@ void display() {
     drawGradientWater();
     ///Second ship function
     seconship(ship2X, shipRotated);
+    ///third ship
+    thirdship(-27,26);
     ///Ground color
     drawGround();
     ///boxes function
-    drawStackedBoxes(-45, -6,0.8);
+    drawStackedBoxes(-45, -6,0.3);
 
      glBegin(GL_POLYGON);
     glColor3ub(102, 0, 51);
@@ -1211,13 +1574,14 @@ void display() {
 
 
     /// Mail Draw Ships
-    drawShip(0.0, 0.0);
+    drawShip(19,6); /// first ship change
     drawSky();
     if (isNight) {
         drawStars(); // Draw stars at night
     } else {
         drawSmallClouds(); // Draw clouds in day mode
     }
+    plan(-32,37);
     /// Sun and moon
     if (isNight) {
         drawMoon(40.0f, 35.0f, 3.0f); // Draw moon at night
@@ -1232,6 +1596,7 @@ void display() {
     mainCircle(-35.5,-21,0.8);
     mainCircle(-40,-21,0.8);
     mainCircle(-44,-21,0.8);
+    glutSwapBuffers();
 
     glFlush();
 }
@@ -1245,30 +1610,43 @@ void handleSpecialKeypress(int key, int x, int y) {
             shipX += shipSpeed; // Move right
             break;
         case GLUT_KEY_UP:
-            shipY -= shipSpeed; // Move up
+            shipY += shipSpeed; // Move up
             break;
         case GLUT_KEY_DOWN:
-            shipY += shipSpeed; // Move down
+            shipY -= shipSpeed; // Move down
             break;
     }
     glutPostRedisplay(); // Refresh the display after movement
 }
 ///Mail Function
 int main(int argc, char** argv) {
+    // Print information to terminal
+    std::cout<< "---------------------------------\n";
+    printf("Welcome to the Port Simulation!\n");
+    printf("This simulation includes:\n");
+    printf("Moving Ships the red ship is control by arrow keys\n");
+    printf("Rotating ship\n");
+    printf("Day night mood\n");
+    printf("switch by pressing key 'N' \n");
+    printf("The plan in the Night sky\n");
+    printf("Mouse event on the plan one click to start and one click to stop the plan\n");
+    printf("---------------------------------\n");
+    printf( "Starting OpenGL Window...\n");
     glutInit(&argc, argv);
     glutInitWindowSize(1400, 800);
     glutInitWindowPosition(50,50);
     glutCreateWindow("Port");
     glutDisplayFunc(display);
     glutKeyboardFunc(handleKeyPress);
-     glutSpecialFunc(handleSpecialKeypress); // Listen for arrow key input
+     glutSpecialFunc(handleSpecialKeypress);// Listen for arrow key input
+      glutMouseFunc(mouse);
     initGL();
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glutTimerFunc(16, update, 0); ///update function for 2nd ship
     glutTimerFunc(16, updateClouds, 0); ///update function for clude
-
-
+    glutTimerFunc(16,updatePlanePosition,0);
+    glutTimerFunc(16,updateship,0);
     gluOrtho2D(-50.0, 50.0, -40.0, 40.0); // Adjusted Y range to match display
     glutMainLoop();
     return 0;
