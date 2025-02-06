@@ -1,0 +1,138 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\shadm\\Desktop\\Semister\\C#\\FeedbackSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4ADEEC68-DEE8-4D07-AF4B-FDD5FD661144}|FeedbackSystem.csproj|c:\\users\\shadm\\desktop\\semister\\c#\\feedbacksystem\\feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4ADEEC68-DEE8-4D07-AF4B-FDD5FD661144}|FeedbackSystem.csproj|solutionrelative:feedback.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4ADEEC68-DEE8-4D07-AF4B-FDD5FD661144}|FeedbackSystem.csproj|c:\\users\\shadm\\desktop\\semister\\c#\\feedbacksystem\\feedbackmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4ADEEC68-DEE8-4D07-AF4B-FDD5FD661144}|FeedbackSystem.csproj|solutionrelative:feedbackmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4ADEEC68-DEE8-4D07-AF4B-FDD5FD661144}|FeedbackSystem.csproj|c:\\users\\shadm\\desktop\\semister\\c#\\feedbacksystem\\feedbackform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4ADEEC68-DEE8-4D07-AF4B-FDD5FD661144}|FeedbackSystem.csproj|solutionrelative:feedbackform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4ADEEC68-DEE8-4D07-AF4B-FDD5FD661144}|FeedbackSystem.csproj|c:\\users\\shadm\\desktop\\semister\\c#\\feedbacksystem\\feedbackform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4ADEEC68-DEE8-4D07-AF4B-FDD5FD661144}|FeedbackSystem.csproj|solutionrelative:feedbackform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4ADEEC68-DEE8-4D07-AF4B-FDD5FD661144}|FeedbackSystem.csproj|C:\\Users\\shadm\\Desktop\\Semister\\C#\\FeedbackSystem\\feedbackform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{4ADEEC68-DEE8-4D07-AF4B-FDD5FD661144}|FeedbackSystem.csproj|solutionrelative:feedbackform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4ADEEC68-DEE8-4D07-AF4B-FDD5FD661144}|FeedbackSystem.csproj|c:\\users\\shadm\\desktop\\semister\\c#\\feedbacksystem\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4ADEEC68-DEE8-4D07-AF4B-FDD5FD661144}|FeedbackSystem.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4ADEEC68-DEE8-4D07-AF4B-FDD5FD661144}|FeedbackSystem.csproj|c:\\users\\shadm\\desktop\\semister\\c#\\feedbacksystem\\feedbacksystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{4ADEEC68-DEE8-4D07-AF4B-FDD5FD661144}|FeedbackSystem.csproj|solutionrelative:feedbacksystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FeedbackForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\shadm\\Desktop\\Semister\\C#\\FeedbackSystem\\FeedbackForm.Designer.cs",
+              "RelativeDocumentMoniker": "FeedbackForm.Designer.cs",
+              "ToolTip": "C:\\Users\\shadm\\Desktop\\Semister\\C#\\FeedbackSystem\\FeedbackForm.Designer.cs",
+              "RelativeToolTip": "FeedbackForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALcAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-05T16:05:52.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FeedbackForm.cs",
+              "DocumentMoniker": "C:\\Users\\shadm\\Desktop\\Semister\\C#\\FeedbackSystem\\FeedbackForm.cs",
+              "RelativeDocumentMoniker": "FeedbackForm.cs",
+              "ToolTip": "C:\\Users\\shadm\\Desktop\\Semister\\C#\\FeedbackSystem\\FeedbackForm.cs",
+              "RelativeToolTip": "FeedbackForm.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAA2wGMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-05T14:17:11.273Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FeedbackManager.cs",
+              "DocumentMoniker": "C:\\Users\\shadm\\Desktop\\Semister\\C#\\FeedbackSystem\\FeedbackManager.cs",
+              "RelativeDocumentMoniker": "FeedbackManager.cs",
+              "ToolTip": "C:\\Users\\shadm\\Desktop\\Semister\\C#\\FeedbackSystem\\FeedbackManager.cs",
+              "RelativeToolTip": "FeedbackManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-05T09:25:53.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Feedback.cs",
+              "DocumentMoniker": "C:\\Users\\shadm\\Desktop\\Semister\\C#\\FeedbackSystem\\Feedback.cs",
+              "RelativeDocumentMoniker": "Feedback.cs",
+              "ToolTip": "C:\\Users\\shadm\\Desktop\\Semister\\C#\\FeedbackSystem\\Feedback.cs",
+              "RelativeToolTip": "Feedback.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-05T09:24:41.186Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FeedbackForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\shadm\\Desktop\\Semister\\C#\\FeedbackSystem\\FeedbackForm.cs",
+              "RelativeDocumentMoniker": "FeedbackForm.cs",
+              "ToolTip": "C:\\Users\\shadm\\Desktop\\Semister\\C#\\FeedbackSystem\\FeedbackForm.cs [Design]",
+              "RelativeToolTip": "FeedbackForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-05T14:03:30.567Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\shadm\\Desktop\\Semister\\C#\\FeedbackSystem\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\shadm\\Desktop\\Semister\\C#\\FeedbackSystem\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-05T16:10:10.674Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FeedbackSystem.csproj",
+              "DocumentMoniker": "C:\\Users\\shadm\\Desktop\\Semister\\C#\\FeedbackSystem\\FeedbackSystem.csproj",
+              "RelativeDocumentMoniker": "FeedbackSystem.csproj",
+              "ToolTip": "C:\\Users\\shadm\\Desktop\\Semister\\C#\\FeedbackSystem\\FeedbackSystem.csproj",
+              "RelativeToolTip": "FeedbackSystem.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-02-05T09:24:16.421Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
