@@ -14,6 +14,7 @@ int main()
 	cout << "s2 = " << s2 << endl;
 	cout << "s3 = " << s3 << endl;
 	cout << "s4 = " << s4 << endl;
+	cout<<"s5="<<s5<<endl;
 
 	return 0;
 }
