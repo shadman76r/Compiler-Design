@@ -1,2 +1,2 @@
 import GoogleMaps
-GMSServices.provideAPIKey("YOUR_GOOGLE_MAPS_API_KEY")
+GMSServices.provideAPIKey("Google_map_my_map_app")
