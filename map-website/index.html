@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bangladesh Map with Search</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Leaflet Search Plugin CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-search/dist/leaflet-control-search.css" />
+
+  <style>
+    /* Set the height of the map */
+    #map {
+      height: 100%;
+      width: 100%;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Map container -->
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Leaflet Search Plugin JS -->
+  <script src="https://unpkg.com/leaflet-control-search/dist/leaflet-control-search.js"></script>
+
+  <script>
+    // Initialize the map, centered on Bangladesh with a zoom level of 6
+    var map = L.map('map').setView([23.685, 90.3563], 6); // Coordinates for Bangladesh
+
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Add a marker at Dhaka, Bangladesh (example location)
+    var marker = L.marker([23.8103, 90.4125]).addTo(map);
+    marker.bindPopup("Dhaka, Bangladesh").openPopup();
+
+    // Add more markers for other cities in Bangladesh (optional)
+    var marker2 = L.marker([22.8456, 89.5403]).addTo(map); // Khulna
+    marker2.bindPopup("Khulna, Bangladesh");
+
+    var marker3 = L.marker([24.3636, 88.6241]).addTo(map); // Rajshahi
+    marker3.bindPopup("Rajshahi, Bangladesh");
+    
+    var marker4 = L.marker([25.4667, 88.6333]).addTo(map); // Dinajpur
+    marker4.bindPopup("Dinajpur, Bangladesh");
+
+    var marker5 = L.marker([25.7496, 89.2409]).addTo(map); // Rangpur
+    marker5.bindPopup("Rangpur, Bangladesh");
+    // Add search control to search places on the map
+    var searchControl = new L.Control.Search({
+      layer: L.featureGroup([marker, marker2, marker3]),  // Add all the markers to search through
+      initial: false,
+      zoom: 12,
+      marker: false
+    });
+    map.addControl(searchControl);
+  </script>
+
+</body>
+</html>
