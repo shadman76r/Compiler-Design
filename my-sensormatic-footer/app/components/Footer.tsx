@@ -10,7 +10,7 @@ export default function Footer() {
           <h3 className="font-bold">CONNECT</h3>
           <p className="mt-2 text-lg font-bold">+1 800-642-7505 (US)</p>
           <p>Sales and general inquiries</p>
-          <button className="mt-3 border px-4 py-2">Contact Us</button>
+          <button className="text-blue-600 mt-4 border px-4 py-2">Contact Us</button>
         </div>
 
         {/* Buy Sensormatic */}
@@ -19,7 +19,7 @@ export default function Footer() {
           <a href="#" className="text-blue-600 mt-2 block">Download Our Catalog</a>
         </div>
 
-        {/* Press */}
+        {/* Press Section */}
         <div>
           <h3 className="font-bold">PRESS</h3>
           <a href="#" className="text-blue-600 mt-2 block">Media Center</a>
@@ -48,28 +48,31 @@ export default function Footer() {
       {/* Separator */}
       <div className="border-t my-6"></div>
 
-      {/* Logo and Legal Section */}
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-xs">
-        {/* Logo */}
-        <div className="flex items-center space-x-2">
-          <Image src="/sensormatic-logo.png" alt="Sensormatic Logo" width={180} height={50} />
-        </div>
+      {/* Footer Bottom Section */}
+      <div className="container mx-auto flex flex-col items-center md:flex-row justify-between text-xs text-center md:text-left">
+        
+        <div className="flex flex-col items-center space-y-4">
+  {/* Sensormatic Branding Text */}
+  <div className="flex items-center space-x-2">
+    <span className="font-bold text-blue-600">Sensormatic by Johnson Controls</span>
+  </div>
 
-        {/* Copyright Text */}
-        <p className="mt-2 md:mt-0">© 2025 Johnson Controls. All Rights Reserved.</p>
+  {/* Copyright Text */}
+  <p className="text-gray-600">© 2025 Johnson Controls. All Rights Reserved.</p>
 
-        {/* Legal Links */}
-        <div className="mt-2 md:mt-0 flex space-x-4">
-          <a href="#" className="text-blue-600">Legal</a> |
-          <a href="#" className="text-blue-600">Privacy Settings</a> |
-          <a href="#" className="text-blue-600">Technical Terms</a> |
-          <a href="#" className="text-blue-600">Cookie Preferences</a>
-        </div>
+  {/* Legal Links */}
+  <div className="flex space-x-4 text-blue-600">
+    <a href="#">Legal</a>
+    <a href="#">Privacy Settings</a>
+    <a href="#">Technical Terms</a>
+    <a href="#">Cookie Preferences</a>
+  </div>
+</div>
 
-        {/* Social Icons */}
+        /*{/* Social Icons */}
         <div className="flex space-x-3 mt-2 md:mt-0">
           <Image src="/linkedin.svg" alt="LinkedIn" width={20} height={20} />
-          <Image src="/twitter.svg" alt="Twitter" width={20} height={20} />
+          <Image src="/x-twitter.svg" alt="Twitter" width={20} height={20} />
           <Image src="/youtube.svg" alt="YouTube" width={20} height={20} />
         </div>
       </div>
