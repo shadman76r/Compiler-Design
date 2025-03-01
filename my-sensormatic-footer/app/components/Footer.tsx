@@ -53,7 +53,7 @@ export default function Footer() {
         
         <div className="flex flex-col items-center space-y-4">
   {/* Sensormatic Branding Text */}
-  <div className="flex items-center space-x-2">
+  <div className="flex-1/2 items-center space-x-1">
     <span className="font-bold text-blue-600">Sensormatic by Johnson Controls</span>
   </div>
 
@@ -68,14 +68,7 @@ export default function Footer() {
     <a href="#">Cookie Preferences</a>
   </div>
 </div>
-
-        /*{/* Social Icons */}
-        <div className="flex space-x-3 mt-2 md:mt-0">
-          <Image src="/linkedin.svg" alt="LinkedIn" width={20} height={20} />
-          <Image src="/x-twitter.svg" alt="Twitter" width={20} height={20} />
-          <Image src="/youtube.svg" alt="YouTube" width={20} height={20} />
-        </div>
-      </div>
+</div>
     </footer>
   );
 }
