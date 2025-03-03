@@ -1,13 +1,15 @@
+'use client';  // This makes the component a Client Component
+
 import Image from "next/image";
 
 export default function Footer() {
   return (
     <>
-      <section className="my-12 text-center">
+      <section className="my-12 text-center animate-slide-from-right">
         <h3 className="text-xl flex justify-items-end font-bold mb-10">Our customers include:</h3>
         <div className="flex justify-center items-center space-x-14 flex-wrap">
           <div className="w-32 h-32 flex items-center justify-center">
-            <Image src="/adidas-8.svg" alt="#" width={100} height={30} />
+            <Image src="/adidas1.svg" alt="#" width={100} height={30} />
           </div>
           <div className="w-32 h-32 flex items-center justify-center">
             <Image src="/boots-logo.svg" alt="#" width={100} height={30} />
@@ -24,8 +26,23 @@ export default function Footer() {
           <div className="w-32 h-32 flex items-center justify-center">
             <Image src="/t-mobile-2.svg" alt="#" width={100} height={30} />
           </div>
-          <div className="w-32 h-32 ftlex items-center justify-center">
+          <div className="w-32 h-32 flex items-center justify-center">
+            <Image src="/boots.svg" alt="#" width={100} height={10} />
+          </div>
+          <div className="w-32 h-32 flex items-center justify-center">
             <Image src="/wilson-logo.svg" alt="#" width={100} height={10} />
+          </div>
+          <div className="w-32 h-32 flex items-center justify-center">
+            <Image src="/claires-seeklogo.png" alt="#" width={100} height={10} />
+          </div>
+          <div className="w-32 h-32 flex items-center justify-center">
+            <Image src="/current-kroger-logo.svg" alt="#" width={100} height={10} />
+          </div>
+          <div className="w-32 h-32 flex items-center justify-center">
+            <Image src="/ray-ban-logo-2 (1).svg" alt="#" width={100} height={10} />
+          </div>
+          <div className="w-32 h-32 flex items-center justify-center">
+            <Image src="/wilson-logo (1).svg" alt="#" width={100} height={10} />
           </div>
         </div>
       </section>
@@ -33,7 +50,6 @@ export default function Footer() {
       <footer className="bg-white text-black p-6 border-t mt-10">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-5 gap-6 text-sm">
           {/* Other sections */}
-
           {/*Connect part*/ }
           <div>
             <h3 className="font-bold">CONNECT</h3>
@@ -92,6 +108,21 @@ export default function Footer() {
           </div>
         </div>
       </footer>
+
+      <style jsx>{`
+        @keyframes slideFromRight {
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+
+        .animate-slide-from-right {
+          animation: slideFromRight 1s ease-out forwards;
+        }
+      `}</style>
     </>
   );
 }
