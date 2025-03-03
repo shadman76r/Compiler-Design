@@ -4,34 +4,28 @@ export default function Footer() {
   return (
     <>
       <section className="my-12 text-center">
-        <h2 className="text-xl font-semibold mb-4">Our customers include:</h2>
-        <div className="flex justify-center items-center space-x-12 flex-wrap">
+        <h3 className="text-xl flex justify-items-end font-bold mb-10">Our customers include:</h3>
+        <div className="flex justify-center items-center space-x-14 flex-wrap">
           <div className="w-32 h-32 flex items-center justify-center">
-            <Image src="/images/rayban-logo.png" alt="RayBan" width={120} height={50} />
+            <Image src="/adidas-8.svg" alt="#" width={100} height={30} />
           </div>
           <div className="w-32 h-32 flex items-center justify-center">
-            <Image src="/images/adidas-logo.png" alt="Adidas" width={120} height={50} />
+            <Image src="/boots-logo.svg" alt="#" width={100} height={30} />
           </div>
           <div className="w-32 h-32 flex items-center justify-center">
-            <Image src="/images/mango-logo.png" alt="Mango" width={120} height={50} />
+            <Image src="/levis-1.svg" alt="#" width={100} height={30} />
           </div>
           <div className="w-32 h-32 flex items-center justify-center">
-            <Image src="/images/tmobile-logo.png" alt="T-Mobile" width={120} height={50} />
+            <Image src="/mango-4.svg" alt="#" width={100} height={30} />
           </div>
           <div className="w-32 h-32 flex items-center justify-center">
-            <Image src="/images/kroger-logo.png" alt="Kroger" width={120} height={50} />
+            <Image src="/puma-logo.svg" alt="#" width={100} height={30} />
           </div>
           <div className="w-32 h-32 flex items-center justify-center">
-            <Image src="/images/boots-logo.png" alt="Boots" width={120} height={50} />
+            <Image src="/t-mobile-2.svg" alt="#" width={100} height={30} />
           </div>
-          <div className="w-32 h-32 flex items-center justify-center">
-            <Image src="/images/levis-logo.png" alt="Levis" width={120} height={50} />
-          </div>
-          <div className="w-32 h-32 flex items-center justify-center">
-            <Image src="../../pictures/puma-logo-png_seeklogo-113793.png" alt="Puma" width={120} height={50} />
-          </div>
-          <div className="w-32 h-32 flex items-center justify-center">
-            <Image src="/images/claires-logo.png" alt="Claire's" width={120} height={50} />
+          <div className="w-32 h-32 ftlex items-center justify-center">
+            <Image src="/wilson-logo.svg" alt="#" width={100} height={10} />
           </div>
         </div>
       </section>
@@ -39,20 +33,26 @@ export default function Footer() {
       <footer className="bg-white text-black p-6 border-t mt-10">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-5 gap-6 text-sm">
           {/* Other sections */}
+
+          {/*Connect part*/ }
           <div>
             <h3 className="font-bold">CONNECT</h3>
             <p className="mt-2 text-lg font-bold">+1 800-642-7505 (US)</p>
             <p>Sales and general inquiries</p>
             <button className="text-blue-600 mt-4 border px-4 py-2">Contact Us</button>
           </div>
+          {/* Buy sensomatic part*/}
           <div>
             <h3 className="font-bold">BUY SENSORMATIC</h3>
             <a href="#" className="text-blue-600 mt-2 block">Download Our Catalog</a>
           </div>
+          {/*Press part*/}
           <div>
             <h3 className="font-bold">PRESS</h3>
             <a href="#" className="text-blue-600 mt-2 block">Media Center</a>
           </div>
+
+          {/*Get help part*/}
           <div>
             <h3 className="font-bold">GET HELP</h3>
             <a href="#" className="text-blue-600 mt-2 block">Support and Service</a>
@@ -72,11 +72,11 @@ export default function Footer() {
         <div className="border-t my-6"></div>
 
         {/* Footer Bottom Section */}
-        <div className="container mx-auto flex flex-col items-center md:flex-row justify-between text-xs text-center md:text-left">
+        <div className="">
           <div className="flex flex-col items-center space-y-4">
             {/* Sensormatic Branding Text */}
-            <div className="flex items-center space-x-1">
-              <span className="font-bold text-blue-600">Sensormatic by Johnson Controls</span>
+            <div className="flex justify-center space-x-1">
+              <span className=" flex justify-center font-bold text-blue-600">Sensormatic by Johnson Controls</span>
             </div>
 
             {/* Copyright Text */}
