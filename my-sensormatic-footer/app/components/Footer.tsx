@@ -1,13 +1,22 @@
-'use client';  // This makes the component a Client Component
-
+'use client';
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import styles from "./Footer.module.css"; // Import the CSS file for animation
 
 export default function Footer() {
+  const [isAnimationDone, setIsAnimationDone] = useState(false);
+
+  useEffect(() => {
+    setIsAnimationDone(true); // Trigger the animation once the component is mounted
+  }, []);
+
   return (
     <>
-      <section className="my-12 text-center animate-slide-from-right">
-        <h3 className="text-xl flex justify-items-end font-bold mb-10">Our customers include:</h3>
-        <div className="flex justify-center items-center space-x-14 flex-wrap">
+      <section
+        className={`my-12 text-center ${isAnimationDone ? styles.animateSlideFromRight : ""}`}
+      >
+        <h3 className="text-xl font-bold mb-10">Our customers include:</h3>
+        <div className="flex flex-wrap justify-center items-center space-x-14">
           <div className="w-32 h-32 flex items-center justify-center">
             <Image src="/adidas1.svg" alt="#" width={100} height={30} />
           </div>
@@ -57,18 +66,18 @@ export default function Footer() {
             <p>Sales and general inquiries</p>
             <button className="text-blue-600 mt-4 border px-4 py-2">Contact Us</button>
           </div>
-          {/* Buy sensomatic part*/}
+          {/* Buy Sensomatic */}
           <div>
             <h3 className="font-bold">BUY SENSORMATIC</h3>
             <a href="#" className="text-blue-600 mt-2 block">Download Our Catalog</a>
           </div>
-          {/*Press part*/}
+          {/* Press */}
           <div>
             <h3 className="font-bold">PRESS</h3>
             <a href="#" className="text-blue-600 mt-2 block">Media Center</a>
           </div>
 
-          {/*Get help part*/}
+          {/* Get Help */}
           <div>
             <h3 className="font-bold">GET HELP</h3>
             <a href="#" className="text-blue-600 mt-2 block">Support and Service</a>
@@ -92,7 +101,7 @@ export default function Footer() {
           <div className="flex flex-col items-center space-y-4">
             {/* Sensormatic Branding Text */}
             <div className="flex justify-center space-x-1">
-              <span className=" flex justify-center font-bold text-blue-600">Sensormatic by Johnson Controls</span>
+              <span className="flex justify-center font-bold text-blue-600">Sensormatic by Johnson Controls</span>
             </div>
 
             {/* Copyright Text */}
@@ -108,21 +117,6 @@ export default function Footer() {
           </div>
         </div>
       </footer>
-
-      <style jsx>{`
-        @keyframes slideFromRight {
-          0% {
-            transform: translateX(100%);
-          }
-          100% {
-            transform: translateX(0);
-          }
-        }
-
-        .animate-slide-from-right {
-          animation: slideFromRight 1s ease-out forwards;
-        }
-      `}</style>
     </>
   );
 }
